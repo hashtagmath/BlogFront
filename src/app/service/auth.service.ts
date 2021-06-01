@@ -9,6 +9,7 @@ import { UserLogin } from '../model/UserLogin';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   constructor(private http: HttpClient) { }
@@ -21,4 +22,5 @@ return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar', userLog
 cadastrar(user: User): Observable<User>{
 return this.http.post<User>('http://localhost:8080/usuarios/cadastrar', user)
   }
+  
 }

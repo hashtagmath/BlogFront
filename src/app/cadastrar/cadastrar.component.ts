@@ -9,24 +9,24 @@ import { AuthService } from '../service/auth.service';
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.css']
 })
+
 export class CadastrarComponent implements OnInit {
 
-user: User = new User
-confirmarSenha: string
-tipoUsuario:string
+  user: User = new User
+  confirmarSenha: string
+  tipoUsuario: string
 
   constructor(
     private authService: AuthService,
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit() {
     window.scroll(0,0)
   }
 
-  confirmSenha(event:any) {
+  confirmSenha(event: any) {
     this.confirmarSenha = event.target.value
-
   }
 
   tipoUser(event: any){
@@ -37,16 +37,16 @@ tipoUsuario:string
     this.user.tipo = this.tipoUsuario
 
     if(this.user.senha != this.confirmarSenha){
-      alert('As senhas não conferem.')
-    }else{
-      this.authService.cadastrar(this.user).subscribe((resp: User) =>{
+      alert('As senhas não conferem!')
+    } else {
+      this.authService.cadastrar(this.user).subscribe((resp: User) => {
         this.user = resp
         this.router.navigate(['/entrar'])
         alert('Usuário cadastrado com sucesso!')
       })
-      
     }
 
   }
+
 
 }
